@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WinACTV
+{
+    public partial class main : Form
+    {
+        private static List<string> key = new List<string>()
+        {
+            "RAR registration data",
+            "Federal Agency for Education",
+            "1000000 PC usage license",
+            "UID=b621cca9a84bc5deffbf",
+            "6412612250ffbf533df6db2dfe8ccc3aae5362c06d54762105357d",
+            "5e3b1489e751c76bf6e0640001014be50a52303fed29664b074145",
+            "7e567d04159ad8defc3fb6edf32831fd1966f72c21c0c53c02fbbb",
+            "2f91cfca671d9c482b11b8ac3281cb21378e85606494da349941fa",
+            "e9ee328f12dc73e90b6356b921fbfb8522d6562a6a4b97e8ef6c9f",
+            "fb866be1e3826b5aa126a4d2bfe9336ad63003fc0e71c307fc2c60",
+            "64416495d4c55a0cc82d402110498da970812063934815d81470829275"
+        };
+        public main()
+        {
+            InitializeComponent();
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+            txtRuta.ReadOnly = true;
+            btnAct.Enabled = false;
+            lblEstado.Text = "";
+        }
+
+        private void btnSr_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txtRuta.Text = fbd.SelectedPath;
+                btnAct.Enabled = true;
+                btnSr.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una ruta");
+            }
+        
+
+        }
+        public string barra = "\\";
+        private void btnAct_Click(object sender, EventArgs e)
+        {
+            string rutaArchivo = txtRuta.Text;
+            if (rutaArchivo.Length > 0)
+            {
+                rutaArchivo += barra+"rarreg.key";
+                txtRuta.Text = rutaArchivo;
+                using(StreamWriter sw = File.CreateText(rutaArchivo))
+                {
+                    foreach(string i in key)
+                    {
+                        sw.WriteLine(i);
+                    }
+                }
+                lblEstado.Text = "WinRAR Activado con exito!";
+                btnAct.Enabled = false;
+            }
+        }
+    }
+}

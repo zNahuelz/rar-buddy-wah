@@ -1,0 +1,11 @@
+D:\IDAT\C#\WinACTV\bin\Debug\WinACTV.exe.config
+D:\IDAT\C#\WinACTV\bin\Debug\WinACTV.exe
+D:\IDAT\C#\WinACTV\bin\Debug\WinACTV.pdb
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.csproj.AssemblyReference.cache
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.csproj.SuggestedBindingRedirects.cache
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.main.resources
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.Properties.Resources.resources
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.csproj.GenerateResource.cache
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.csproj.CoreCompileInputs.cache
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.exe
+D:\IDAT\C#\WinACTV\obj\Debug\WinACTV.pdb
