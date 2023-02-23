@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +15,7 @@ namespace WinACTV
 {
     public partial class main : Form
     {
+        
         private static List<string> key = new List<string>()
         {
             "RAR registration data",
@@ -27,6 +30,34 @@ namespace WinACTV
             "fb866be1e3826b5aa126a4d2bfe9336ad63003fc0e71c307fc2c60",
             "64416495d4c55a0cc82d402110498da970812063934815d81470829275"
         };
+
+        private static List<string> n = new List<string>()
+        {
+            "winrar","WinRAR","WINRAR","winrar"
+        };
+        public static bool nivelPermiso()
+        {
+            bool admin;
+            using (WindowsIdentity i = WindowsIdentity.GetCurrent())
+            {
+                WindowsPrincipal p = new WindowsPrincipal(i);
+                admin = p.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            if (admin) { return true; }
+            else { return false; }
+        }
+
+        public static bool checkCadena(string cadena)
+        {
+            bool st = false;
+            foreach(string i in n)
+            {
+                if (cadena.Contains(i)) { st = true; }
+                else { st = false; }
+            }
+            return st;
+        }
+
         public main()
         {
             InitializeComponent();
@@ -34,9 +65,19 @@ namespace WinACTV
 
         private void main_Load(object sender, EventArgs e)
         {
-            txtRuta.ReadOnly = true;
-            btnAct.Enabled = false;
-            lblEstado.Text = "";
+            bool permisos = nivelPermiso();
+            if (permisos)
+            {
+                txtRuta.ReadOnly = true;
+                btnAct.Enabled = false;
+                lblEstado.Text = "";
+            }
+            else
+            {
+                DialogResult adv = MessageBox.Show("Debe ejecutar la herramienta con permisos de administrador!", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+
         }
 
         private void btnSr_Click(object sender, EventArgs e)
@@ -71,9 +112,30 @@ namespace WinACTV
                         sw.WriteLine(i);
                     }
                 }
-                lblEstado.Text = "WinRAR Activado con exito!";
-                btnAct.Enabled = false;
+                //Revisar.
+                bool estado = checkCadena(rutaArchivo);
+                if (estado)
+                {
+                    lblEstado.Text = "WinRAR Activado con exito!";
+                    btnAct.Enabled = false;
+                }
+                else
+                {
+                    lblEstado.Text = "No se detecto la palabra 'WinRAR' en el directorio proporcionado. WinRAR probablemente activado.";
+                    btnAct.Enabled = false;
+                }
+
             }
+        }
+
+        private void linkLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/zNahuelz");
+            }
+            catch(Exception ex) { MessageBox.Show("Ups! Parece que no podemos encontrar un navegador web predeterminado." +Environment.NewLine+"Vease el error:"+Environment.NewLine+ex.ToString()); }
+            
         }
     }
 }
