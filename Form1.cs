@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.Text;
@@ -49,13 +50,13 @@ namespace WinACTV
 
         public static bool checkCadena(string cadena)
         {
-            bool st = false;
+            int num = 0;
             foreach(string i in n)
             {
-                if (cadena.Contains(i)) { st = true; }
-                else { st = false; }
+                if (cadena.Contains(i)) { num += 1; }
             }
-            return st;
+            if(num>0) { return true; }
+            else { return false; }
         }
 
         public main()
@@ -77,6 +78,8 @@ namespace WinACTV
                 DialogResult adv = MessageBox.Show("Debe ejecutar la herramienta con permisos de administrador!", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
 
         }
 
@@ -118,10 +121,11 @@ namespace WinACTV
                 {
                     lblEstado.Text = "WinRAR Activado con exito!";
                     btnAct.Enabled = false;
+                    SystemSounds.Asterisk.Play();
                 }
                 else
                 {
-                    lblEstado.Text = "No se detecto la palabra 'WinRAR' en el directorio proporcionado. WinRAR probablemente activado.";
+                    lblEstado.Text = "No se detecto la palabra WinRAR en el directorio proporcionado. WinRAR probablemente fue activado.";
                     btnAct.Enabled = false;
                 }
 
@@ -136,6 +140,11 @@ namespace WinACTV
             }
             catch(Exception ex) { MessageBox.Show("Ups! Parece que no podemos encontrar un navegador web predeterminado." +Environment.NewLine+"Vease el error:"+Environment.NewLine+ex.ToString()); }
             
+        }
+
+        private void lblEstado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

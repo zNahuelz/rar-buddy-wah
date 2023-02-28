@@ -36,12 +36,12 @@
             this.lblEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pbMain = new System.Windows.Forms.PictureBox();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.linkLbl = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.linkLbl = new System.Windows.Forms.LinkLabel();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.pbMain = new System.Windows.Forms.PictureBox();
             this.ssMain.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,6 +91,7 @@
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(48, 17);
             this.lblEstado.Text = "<----->";
+            this.lblEstado.Click += new System.EventHandler(this.lblEstado_Click);
             // 
             // tcMain
             // 
@@ -116,6 +117,15 @@
             this.tabPage1.Text = "Inicio";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(110, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "RUTA WinRAR";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.linkLbl);
@@ -130,36 +140,6 @@
             this.tabPage2.Text = "Acerca de";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // pbMain
-            // 
-            this.pbMain.Image = global::WinACTV.Properties.Resources.YNYDOnOv_400x400;
-            this.pbMain.Location = new System.Drawing.Point(7, 7);
-            this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(123, 133);
-            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMain.TabIndex = 0;
-            this.pbMain.TabStop = false;
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(147, 28);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(138, 14);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "Desarrollado por: zNahuelz\r\n";
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl2.Location = new System.Drawing.Point(139, 51);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(154, 14);
-            this.lbl2.TabIndex = 2;
-            this.lbl2.Text = "WinACTv | \"WinRAR Activator\"\r\n";
-            // 
             // linkLbl
             // 
             this.linkLbl.AutoSize = true;
@@ -171,14 +151,35 @@
             this.linkLbl.Text = "GitHub";
             this.linkLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_LinkClicked);
             // 
-            // label1
+            // lbl2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "RUTA WinRAR";
+            this.lbl2.AutoSize = true;
+            this.lbl2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.Location = new System.Drawing.Point(139, 51);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(154, 14);
+            this.lbl2.TabIndex = 2;
+            this.lbl2.Text = "WinACTv | \"WinRAR Activator\"\r\n";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.Location = new System.Drawing.Point(147, 28);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(138, 14);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "Desarrollado por: zNahuelz\r\n";
+            // 
+            // pbMain
+            // 
+            this.pbMain.Image = global::WinACTV.Properties.Resources.YNYDOnOv_400x400;
+            this.pbMain.Location = new System.Drawing.Point(7, 7);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(123, 133);
+            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMain.TabIndex = 0;
+            this.pbMain.TabStop = false;
             // 
             // main
             // 
@@ -191,7 +192,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WinACTv - v0.2";
+            this.Text = "WinACTv - v0.3";
             this.Load += new System.EventHandler(this.main_Load);
             this.ssMain.ResumeLayout(false);
             this.ssMain.PerformLayout();
