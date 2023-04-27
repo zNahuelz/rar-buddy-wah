@@ -17,7 +17,7 @@ namespace WinACTV
     public partial class main : Form
     {
         
-        private static List<string> key = new List<string>()
+        private static readonly List<string> key = new List<string>()
         {
             "RAR registration data",
             "Federal Agency for Education",
@@ -32,11 +32,11 @@ namespace WinACTV
             "64416495d4c55a0cc82d402110498da970812063934815d81470829275"
         };
 
-        private static List<string> n = new List<string>()
+        private static readonly List<string> n = new List<string>()
         {
             "winrar","WinRAR","WINRAR","winrar"
         };
-        public static bool nivelPermiso()
+        public static bool NivelPermiso()
         {
             bool admin;
             using (WindowsIdentity i = WindowsIdentity.GetCurrent())
@@ -48,7 +48,7 @@ namespace WinACTV
             else { return false; }
         }
 
-        public static bool checkCadena(string cadena)
+        public static bool CheckCadena(string cadena)
         {
             int num = 0;
             foreach(string i in n)
@@ -66,8 +66,8 @@ namespace WinACTV
 
         private void main_Load(object sender, EventArgs e)
         {
-            bool permisos = nivelPermiso();
-            if (permisos)
+            bool permisos = NivelPermiso();
+            if (permisos) 
             {
                 txtRuta.ReadOnly = true;
                 btnAct.Enabled = false;
@@ -75,7 +75,7 @@ namespace WinACTV
             }
             else
             {
-                DialogResult adv = MessageBox.Show("Debe ejecutar la herramienta con permisos de administrador!", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("Debe ejecutar la herramienta con permisos de administrador!", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             this.MinimizeBox = false;
@@ -116,7 +116,7 @@ namespace WinACTV
                     }
                 }
                 //Revisar.
-                bool estado = checkCadena(rutaArchivo);
+                bool estado = CheckCadena(rutaArchivo);
                 if (estado)
                 {
                     lblEstado.Text = "WinRAR Activado con exito!";
@@ -125,7 +125,8 @@ namespace WinACTV
                 }
                 else
                 {
-                    lblEstado.Text = "No se detecto la palabra WinRAR en el directorio proporcionado. WinRAR probablemente fue activado.";
+                    lblEstado.Text = "WinRAR Activado con exito!";
+                    MessageBox.Show("No se encontro la palabra 'WinRAR' en la ruta especificada. Se recomienda comprobar la activación o volver a intentarlo.","ADVERTENCIA",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     btnAct.Enabled = false;
                 }
 
