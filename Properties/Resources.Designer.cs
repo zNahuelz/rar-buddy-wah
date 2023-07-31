@@ -63,9 +63,19 @@ namespace WinACTV.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap YNYDOnOv_400x400 {
+        internal static System.Drawing.Bitmap _301_3017073_source_mlp_winrar_icon {
             get {
-                object obj = ResourceManager.GetObject("YNYDOnOv_400x400", resourceCulture);
+                object obj = ResourceManager.GetObject("301-3017073_source-mlp-winrar-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b47312b3460d9bd45e7824346b01d69e {
+            get {
+                object obj = ResourceManager.GetObject("b47312b3460d9bd45e7824346b01d69e", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
