@@ -36,6 +36,7 @@ namespace WinACTV
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //Test.....
             txtPath.Enabled = false;
             txtPath.ReadOnly = true;
             btnActivate.Enabled = false;
