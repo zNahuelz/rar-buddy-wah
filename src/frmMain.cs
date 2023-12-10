@@ -36,11 +36,19 @@ namespace WinACTV
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //Test.....
-            txtPath.Enabled = false;
-            txtPath.ReadOnly = true;
-            btnActivate.Enabled = false;
-            txtslMain.Text = "Select WinRAR path to begin.";
+            bool admin = PermissionLevel();
+            if (admin)
+            {
+                txtPath.Enabled = false;
+                txtPath.ReadOnly = true;
+                btnActivate.Enabled = false;
+                txtslMain.Text = "Select WinRAR path to begin.";
+            }
+            else
+            {
+                MessageBox.Show("Ups! The tool needs to be executed as administrator. Try again!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
         }
 
         public bool PermissionLevel()

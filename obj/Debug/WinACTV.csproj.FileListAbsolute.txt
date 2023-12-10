@@ -1,9 +1,0 @@
-D:\Development\C#\WinACTV\bin\Debug\WinACTV.exe
-D:\Development\C#\WinACTV\bin\Debug\WinACTV.pdb
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.csproj.AssemblyReference.cache
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.frmMain.resources
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.Properties.Resources.resources
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.csproj.GenerateResource.cache
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.csproj.CoreCompileInputs.cache
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.exe
-D:\Development\C#\WinACTV\obj\Debug\WinACTV.pdb
