@@ -26,6 +26,7 @@ Puedes dirigirte a la sección de [releases](https://github.com/zNahuelz/rar-bud
 
 ## Imágenes
 Ventana principal del programa
+
 <img src="docs/public/main.png" alt="Ventana principal del programa"/>
 
 ## Advertencia
