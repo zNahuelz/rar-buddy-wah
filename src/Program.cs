@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using RarBuddy;
+using System;
 using System.Windows.Forms;
 
 namespace WinACTV
@@ -14,7 +14,7 @@ namespace WinACTV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new Main());
         }
     }
 }
